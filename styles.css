@@ -57,6 +57,11 @@ article h4 {
 	margin:10px;
 }
 
+article h6 {
+	margin:12px;
+	font-size:13px;
+}
+
 article ul {
 	list-style-type:circle;
 	margin: 10px;
@@ -88,4 +93,9 @@ a:hover {
 #photosection img {
 	margin:14px;
 	width:30%;
+}
+
+#smoothie {
+	background-image:url(images/smoothie.JPG);
+	color:#FFFFFF;
 }
