@@ -33,7 +33,6 @@ section {
 	border-color:#000000;
 	width:40%;
 	margin:auto;
-	height:350px;
 }
 
 article {
@@ -69,10 +68,20 @@ article ul {
 }
 
 
-section p {
-	float:right;
-	width:50%;
+#home p {
 	margin:10px;
+	font-size:18px;
+	color:#FFFFFF;
+	vertical-align:middle;
+}
+
+#home a {
+	color:#DB7093;
+	font-weight:bold;
+}
+
+#home a:hover {
+	color:#99CC00;
 }
 
 header a {
@@ -99,4 +108,9 @@ a:hover {
 #smoothie {
 	background-image:url(images/smoothie.JPG);
 	color:#FFFFFF;
+}
+
+#home {
+	background-image:url(bgpic.JPG);
+	height:350px;
 }
