@@ -123,3 +123,7 @@ h1 {
 	color: #659e94;
 }
 
+#footer .copyright {
+	text-align: center;
+	list-style: none;
+}
