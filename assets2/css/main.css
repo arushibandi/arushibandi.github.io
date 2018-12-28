@@ -3,11 +3,16 @@ body {
 	font-family: 'Thasadith', sans-serif;
 }
 
-h1 {
+#header h1 {
 	font-family: 'Zeyada', cursive;
 	text-align: center;
 	font-size: 60px;
 	margin: 0;
+}
+
+#header img {
+	margin: 30px;
+	max-width: 700px;
 }
 
 
