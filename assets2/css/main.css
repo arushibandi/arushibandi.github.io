@@ -3,6 +3,15 @@ body {
 	font-family: 'Thasadith', sans-serif;
 }
 
+#header-twwln img {
+	width: 50%;
+		
+}
+
+#header-twwln {
+	background-color: "#003399";
+}
+
 #header h1 {
 	font-family: 'Zeyada', cursive;
 	text-align: center;
