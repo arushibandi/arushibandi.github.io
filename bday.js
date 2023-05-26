@@ -16,7 +16,6 @@ function newPeerConnection() {
 }
 
 function generateOffer() {
-  console.log('generateOffer');
   pcSeq++
   const pc = newPeerConnection();
   pcs.set(pcSeq, pc)
@@ -25,7 +24,8 @@ function generateOffer() {
     textelement = document.getElementById('lastinvite');
     const offer = pc.localDescription;
     console.log("unencoded", JSON.stringify(offer.toJSON()))
-    const encoded = `invite.html?sdp=${encodeURIComponent(pc.localDescription.sdp)}&id=${pcSeq}`
+    const details = document.getElementById("deets").value
+    const encoded = `invite.html?sdp=${encodeURIComponent(pc.localDescription.sdp)}&id=${pcSeq}&details=${encodeURIComponent(details)}`
     console.log("encoded", encoded)
     textelement.href = encoded;
     textelement.textContent = "link to last invite generated"

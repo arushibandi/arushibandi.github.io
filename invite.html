@@ -5,25 +5,35 @@
     <script src="invite.js"></script>
     <script src="common.js"></script>
 
-    <p>
-      You have received an invitation to arushi & gabby's bday party 2023. I
-      hate the corps, so I'm putting myself through this. You must use Chrome or
-      Firefox for this experiment to work!
+    <p id="reject" hidden="true" style="color: rgb(213, 117, 0)">
+      uhhhh sorry this page is not going to work for you if you didn't receive a
+      special invite link from arushi herself. Or if you didn't follow the
+      instructions to not refresh your tab!!! Or maybe this doesn't work idk
     </p>
 
-    <p>
-      I'm trying to use WebRTC APIs to create something vaguely like partiful,
-      but way uglier and with no server?? or database??
-    </p>
+    <div id="invite" hidden="true">
+      <p>
+        You have received an invitation to arushi & gabby's bday party 2023. I
+        hate the corps, so I'm putting myself through this. You must use Chrome
+        or Firefox for this experiment to work!
+      </p>
 
-    <p>Because I hate myself. Cool let's get drunk June 17th!!!!</p>
+      <p>
+        I'm trying to use WebRTC APIs to create something vaguely like partiful,
+        but way uglier and with no server?? or database??
+      </p>
 
-    <p>If you're not gonna show up ... never speak to me or my gabby again</p>
+      <p>Because I hate myself. Cool let's get drunk June 17th!!!!</p>
 
-    <p>
-      You may have to wait a few seconds or like 20 seconds for the rest of the
-      page to load while you're ... connecting to my browser!!!
-    </p>
+      <p id="details"></p>
+
+      <p>If you're not gonna show up ... never speak to me or my gabby again</p>
+
+      <p>
+        You may have to wait a few seconds or like 20 seconds for the rest of
+        the page to load while you're ... connecting to my browser!!!
+      </p>
+    </div>
 
     <div id="rsvp" hidden="true">
       <p id="connectionText">You are connected!!! Please RSVP below:</p>
@@ -36,9 +46,14 @@
       </form>
       <p id="blurbInstructions" hidden="true" style="color: #ac33ff">
         Your special RSVP has been copied to your clipboard! Paste & send to
-        Arushi via text & wait a few min to see magic. DON'T CLOSE YOUR TAB
+        Arushi via text & wait a few min to see magic. If that didn't work,
+        click the button below to copy to your clipboard. DON'T CLOSE YOUR TAB
+        If you are feeling the urge to navigate around this super cool website,
+        open in a new tab!!!
       </p>
-      <p id="textBackText"></p>
+      <button id="rsvpButton" onclick="copyRSVP()">
+        i'm coming to party!!
+      </button>
     </div>
 
     <div id="allRsvps">

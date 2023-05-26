@@ -11,13 +11,20 @@ const pc = new RTCPeerConnection(configuration);
 let pcSeq = 0;
 // RTCDataChannel
 let dataChannel;
+let myRSVP = ""
 
 function processInvite() {
     const invite = getQueryVariable("sdp")
     const id = getQueryVariable("id")
-    if (invite === null || pcSeq === null) {
+    const details = getQueryVariable("details")
+    if (invite === null || pcSeq === null || details === null) {
         console.log("hmm, seems like you didn't get an invite code. if you're not arushi, please don't use this page")
+        document.getElementById('reject').hidden = false
+        return
     }
+
+    document.getElementById("details").textContent = decodeURIComponent(details)
+    document.getElementById("invite").hidden = false
     console.log("you got an invite: ", decodeURIComponent(invite))
     console.log("your peer connection id is ", id)
     pcSeq = id
@@ -99,9 +106,15 @@ function sendToArushi() {
         "name": attendee,
         "bringing": bringing
     }
-    console.log(JSON.stringify(blurb))
+    myRSVP = JSON.stringify(blurb)
+    console.log(myRSVP)
+
     document.getElementById("blurbInstructions").hidden = false
-    document.getElementById("textBackText").innerText = JSON.stringify(blurb)
-    navigator.clipboard.writeText(JSON.stringify(blurb))
+    document.getElementById("textBackText").innerText = myRSVP
+    navigator.clipboard.writeText(myRSVP)
     return false
+}
+
+function copyRSVP() {
+    navigator.clipboard.writeText(myRSVP)
 }
