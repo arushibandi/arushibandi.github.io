@@ -1,9 +1,3 @@
-// copied from random tutorials i found online, including Scaledrone 
-const configuration = {
-  iceServers: [{
-      urls: "stun:stun.stunprotocol.org"
-  }]
-};
 
 let pcSeq = 0;
 const pcs = new Map();
@@ -11,13 +5,11 @@ const pcs = new Map();
 const dcs = new Map();
 let lastInvite = `invite.html`
 
-function newPeerConnection() {
-  return new RTCPeerConnection(configuration)
-}
 
-function generateOffer() {
+async function generateOffer() {
+  const apiKey = document.getElementById("api").value
   pcSeq++
-  const pc = newPeerConnection();
+  const pc = await newPeerConnection(apiKey);
   pcs.set(pcSeq, pc)
   console.log("pcs are now ", pc)
   pc.onicecandidate = handleicecandidate(() => {
@@ -25,7 +17,7 @@ function generateOffer() {
     const offer = pc.localDescription;
     console.log("unencoded", JSON.stringify(offer.toJSON()))
     const details = document.getElementById("deets").value
-    const encoded = `invite.html?sdp=${encodeURIComponent(pc.localDescription.sdp)}&id=${pcSeq}&details=${encodeURIComponent(details)}`
+    const encoded = `invite.html?sdp=${encodeURIComponent(pc.localDescription.sdp)}&id=${pcSeq}&details=${encodeURIComponent(details)}&api=${apiKey}`
     console.log("encoded", encoded)
     textelement.href = encoded;
     textelement.textContent = "link to last invite generated"

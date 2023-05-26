@@ -1,3 +1,11 @@
+async function newPeerConnection(apiKey) {
+    const response = await fetch(`https://bday.metered.live/api/v1/turn/credentials?apiKey=${apiKey}`);
+    const iceServers = await response.json();
+    return new RTCPeerConnection({
+      iceServers: iceServers
+    });
+  }
+
 function handleicecandidate(callback) {
     return function(event) {
         if (event.candidate != null) {

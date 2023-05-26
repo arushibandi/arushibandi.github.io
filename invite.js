@@ -1,28 +1,24 @@
 window.onload = processInvite
 
-// copied from random tutorials i found online, including Scaledrone 
-const configuration = {
-    iceServers: [{
-        urls: "stun:stun.stunprotocol.org"
-    }]
-  };
 // RTCPeerConnection
-const pc = new RTCPeerConnection(configuration);
+let pc;
 let pcSeq = 0;
 // RTCDataChannel
 let dataChannel;
 let myRSVP = ""
 
-function processInvite() {
+async function processInvite() {
     const invite = getQueryVariable("sdp")
     const id = getQueryVariable("id")
     const details = getQueryVariable("details")
-    if (invite === null || pcSeq === null || details === null) {
-        console.log("hmm, seems like you didn't get an invite code. if you're not arushi, please don't use this page")
+    const apiKey = getQueryVariable("api")
+    if (invite === null || pcSeq === null || details === null || apiKey === null) {
+        console.log("hmm, seems like you didn't get an invite code. sorry!")
         document.getElementById('reject').hidden = false
         return
     }
 
+    pc = await newPeerConnection(apiKey)
     document.getElementById("details").textContent = decodeURIComponent(details)
     document.getElementById("invite").hidden = false
     console.log("you got an invite: ", decodeURIComponent(invite))
@@ -110,7 +106,7 @@ function sendToArushi() {
     console.log(myRSVP)
 
     document.getElementById("blurbInstructions").hidden = false
-    document.getElementById("textBackText").innerText = myRSVP
+    // document.getElementById("textBackText").innerText = myRSVP
     navigator.clipboard.writeText(myRSVP)
     return false
 }
