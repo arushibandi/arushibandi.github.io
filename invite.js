@@ -106,7 +106,6 @@ function sendToArushi() {
     console.log(myRSVP)
 
     document.getElementById("blurbInstructions").hidden = false
-    // document.getElementById("textBackText").innerText = myRSVP
     navigator.clipboard.writeText(myRSVP)
     return false
 }
