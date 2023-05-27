@@ -7,7 +7,11 @@ async function processInvite() {
         document.getElementById('reject').hidden = false
         return
     }
-    document.getElementById("details").textContent = document.getElementById("details").textContent + " " + decodeURIComponent(date)
+    const em = document.createElement('em')
+    em.style = "color:yellowgreen;"
+    em.textContent = " " + decodeURIComponent(date)
+    document.getElementById("details").appendChild(em)
+
     document.getElementById('invite').hidden = false
     document.getElementById('rsvp').hidden = false
 }
@@ -22,23 +26,7 @@ async function sendToArushi() {
 
     document.getElementById("nicetry").hidden = true
     await createComment(attendee, bringing)
-
-    const rsvps =  await fetchComments()
-    console.log(rsvps);
-
-    const list = document.getElementById("allRsvps")
-    while(list.firstChild) {
-        list.removeChild(list.firstChild)
-    }
-
-    for (const rsvp of rsvps) {
-        const ul = document.createElement('ul')
-        const parts = rsvp.message.split(" * ");
-        const emoji = emojis[parseInt(parts[0], 10)]
-        const message = parts[1]
-        ul.textContent = emoji + " " + message
-        list.appendChild(ul)
-    }
+    await fetchGuestList()
 
     return false
 }

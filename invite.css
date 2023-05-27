@@ -17,3 +17,7 @@ img {
     height: 100px;
     width: auto;
 }
+
+input[type="text"] {
+    background-color : #dbffb1; 
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: rgb(116, 182, 189);
+;">
   <head>
     <meta charset="UTF-8" />
   </head>
@@ -22,8 +23,21 @@
       <a id="inviteLink" href="./invite.html" style="color: rgb(139, 19, 63)">
         invite link
       </a>
-      <button id="inviteBtn" onclick="copyLastInvite()">copy share link</button>
+      <button id="inviteBtn" onclick="copyLastInvite()">
+        copy invite link
+      </button>
+      <button id="inviteBtn" onclick="copyAdminLink()">copy admin link</button>
     </p>
+
+    <div>
+      <p>
+        <input id="password" type="text" placeholder="admin password" />
+        <button id="offer" onclick="adminViewGuestList()">
+          see guest list
+        </button>
+        <p id="wrongPass" hidden="true" style="color: rgb(26, 48, 243);">wrong password! stop trying to see the guest list!</p>
+      </p>
+    </div>
 
     <div id="allRsvps">
       <ul id="theGuestList"></ul>

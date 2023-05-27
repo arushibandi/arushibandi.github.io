@@ -52,3 +52,21 @@ async function fetchComments() {
     const comments = await resp.json()
     return comments.comments
 }
+
+async function fetchGuestList() {
+    const rsvps =  await fetchComments()
+
+    const list = document.getElementById("allRsvps")
+    while(list.firstChild) {
+        list.removeChild(list.firstChild)
+    }
+
+    for (const rsvp of rsvps) {
+        const ul = document.createElement('ul')
+        const parts = rsvp.message.split(" * ");
+        const emoji = emojis[parseInt(parts[0], 10)]
+        const message = parts[1]
+        ul.textContent = emoji + " " + message
+        list.appendChild(ul)
+    }
+}
