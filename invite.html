@@ -8,22 +8,25 @@
     <script src="invite.js"></script>
     <script src="util.js"></script>
 
+    <svg height="100px" width="500" hidden="false">
+      <polygon
+        points="0,0 50,60 50,0"
+        style="fill: yellowgreen; stroke: #db92ff; stroke-width: 1"
+      ></polygon>
+      <polygon
+        points="50,70 70,100 70,0"
+        style="fill: yellowgreen; stroke: #db92ff; stroke-width: 1"
+      ></polygon>
+    </svg>
+
+    <p id="loading" style="color: rgb(213, 117, 0)">loading .....</p>
+
     <p id="reject" hidden="true" style="color: rgb(213, 117, 0)">
       uhhhh sorry this page is not going to work for you if you didn't receive a
       special invite link from arushi herself. Or maybe this doesn't work idk
     </p>
 
     <div id="invite" hidden="true">
-      <svg height="210" width="500">
-        <polygon
-          points="0,0 50,60 50,0"
-          style="fill: yellowgreen; stroke: #db92ff; stroke-width: 1"
-        ></polygon>
-        <polygon
-          points="50,70 70,100 70,0"
-          style="fill: yellowgreen; stroke: #db92ff; stroke-width: 1"
-        ></polygon>
-      </svg>
       <img src="img/bday.png" alt="photo of baby arushi partying" />
 
       <h3 id="party" style="color: yellowgreen">!!!!!! PARTY TIME !!!!</h3>
@@ -54,6 +57,8 @@
         Bugs must be reported live at the time/place stated. You'll get to see
         the exclusive guest list only after rsvp-ing :)
       </p>
+
+      <p>P.S this website is doing its best, please be patient as it loads.</p>
     </div>
 
     <br />
@@ -61,18 +66,20 @@
     <div id="rsvp" hidden="true">
       <form>
         <label for="pname">Who are you?</label>
-        <input type="text" id="pname" />
+        <input type="text" id="pname" style="margin-left: 7.2%" />
+        <br />
         <label for="gift">What are you bringing?</label>
-        <input type="text" id="gift" />
+        <input type="text" id="gift" style="align-content: end" />
+
         <input
           type="button"
           id="partyBtn"
           value="ready2party"
-          style="background-color: #db92ff"
+          style="background-color: #db92ff; align-content: end; margin-left: 5%"
           onclick="sendToArushi()"
         />
       </form>
-      <p id="nicetry" hidden="true" style="color: rgb(139, 19, 63)">
+      <p id="nicetry" hidden="true" style="color: rgb(0, 49, 35)">
         Nice try. you're gonna need to fill out the form to see who's coming.
       </p>
     </div>
@@ -85,10 +92,9 @@
   </body>
 
   <br />
-  <br />
 
   <footer>
-    <p>
+    <p id="footerp" hidden="true">
       if you really want to see the guest list without submitting the form again
       and bringing more stuff, ask arushi for the admin password. or read the
       source code and figure it out.

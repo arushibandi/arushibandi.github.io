@@ -5,6 +5,7 @@ async function processInvite() {
     if (getApiKey() === null || getFileKey() === null || date === null) {
         console.log("hmm, seems like you didn't get an invite code. sorry!")
         document.getElementById('reject').hidden = false
+        document.getElementById('loading').hidden = true
         return
     }
     const em = document.createElement('em')
@@ -14,6 +15,8 @@ async function processInvite() {
 
     document.getElementById('invite').hidden = false
     document.getElementById('rsvp').hidden = false
+    document.getElementById('footerp').hidden = false
+    document.getElementById('loading').hidden = true
 }
 
 async function sendToArushi() {
