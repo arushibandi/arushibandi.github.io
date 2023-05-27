@@ -12,3 +12,8 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
+
+img {
+    height: 100px;
+    width: auto;
+}
