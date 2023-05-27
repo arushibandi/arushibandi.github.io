@@ -13,11 +13,11 @@ function createInvite() {
   const api = document.getElementById("api").value
   const db = document.getElementById("db").value
   const details = document.getElementById("details").value
-  lastInvite = `${window.location.hostname}/invite.html?api=${api}&db=${db}&details=${details}`
+  lastInvite = `/invite.html?api=${api}&db=${db}&details=${details}`
   document.getElementById("inviteLink").href= lastInvite
   document.getElementById("inviteLink").style = "color:#e230f2"
 }
 
 function copyLastInvite() {
-  window.navigator.clipboard.writeText(lastInvite)
+  window.navigator.clipboard.writeText(`${window.location.hostname}${lastInvite}`)
 }
