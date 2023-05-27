@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head> </head>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
   <body>
     <script src="bday.js"></script>
-    <script src="common.js"></script>
+    <script src="util.js"></script>
 
     <div>
       <p>
-        for arushi: <input id="deets" type="text" placeholder="party details" />
-        <input id="api" type="api" placeholder="api key" />
-        <button id="offer" onclick="generateOffer()">
+        for arushi: <input id="db" type="text" placeholder="oop" />
+        <input id="api" type="text" placeholder="api key" />
+        <input id="details" type="text" placeholder="details" />
+        <button id="offer" onclick="createInvite()">
           make invites or something??
         </button>
       </p>
     </div>
 
     <p>
-      <a id="lastinvite" href="invite.html" style="color: rgb(138, 18, 80)">
-        generating invite ...
+      <a id="inviteLink" href="./invite.html" style="color: rgb(139, 19, 63)">
+        invite link
       </a>
-      <br />
       <button id="inviteBtn" onclick="copyLastInvite()">copy share link</button>
     </p>
-    <form>
-      <label for="rsvpB">For arushi: paste rsvp blurbs here</label>
-      <input type="text" id="rsvpBlurb" />
-      <input type="button" value="Woo!!!!" onclick="gotRSVP()" />
-    </form>
 
     <div id="allRsvps">
       <ul id="theGuestList"></ul>

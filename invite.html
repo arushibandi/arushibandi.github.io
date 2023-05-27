@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head> </head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="invite.css" />
+  </head>
   <body>
     <script src="invite.js"></script>
-    <script src="common.js"></script>
+    <script src="util.js"></script>
 
     <p id="reject" hidden="true" style="color: rgb(213, 117, 0)">
       uhhhh sorry this page is not going to work for you if you didn't receive a
-      special invite link from arushi herself. Or if you didn't follow the
-      instructions to not refresh your tab!!! Or maybe this doesn't work idk
+      special invite link from arushi herself. Or maybe this doesn't work idk
     </p>
+
+    <p id="emoji" style="color: yellowgreen">!!!!!!PARTY TIME!!!!</p>
 
     <div id="invite" hidden="true">
       <p>
-        You have received an invitation to arushi & gabby's bday party 2023. I
-        hate the corps, so I'm putting myself through this. You must use Chrome
-        or Firefox for this experiment to work!
+        You have received an invitation to arushi & gabby's bday party 2023.
       </p>
 
       <p>
-        I'm trying to use WebRTC APIs to create something vaguely like partiful,
-        but way uglier and with no server?? or database??
+        This is an experiment in creating partiful but without a backend server.
+        I tried using only web p2p libraries but that didn't go well so instead
+        i made a Figma file my database.
       </p>
 
-      <p>Because I hate myself. Cool let's get drunk June 17th!!!!</p>
+      <p>Why? Because I hate myself. Cool let's get drunk June 17th!!!!</p>
 
-      <p id="details"></p>
-
-      <p>If you're not gonna show up ... never speak to me or my gabby again</p>
+      <br />
+      <p id="details">The party shall begin 8pm at</p>
+      <br />
+      <p>
+        If you're not gonna show up ... never speak to me or my gabby again. You
+        must bring something (it could be like, a good attitude or something)
+      </p>
 
       <p>
-        You may have to wait a few seconds or like 20 seconds for the rest of
-        the page to load while you're ... connecting to my browser!!!
+        Please do not report any bugs. You'll get to see the exclusive guest
+        list only after rsvp-ing :)
       </p>
     </div>
 
     <div id="rsvp" hidden="true">
-      <p id="connectionText">You are connected!!! Please RSVP below:</p>
       <form>
         <label for="pname">Who are you?</label>
         <input type="text" id="pname" />
@@ -44,16 +50,6 @@
         <input type="text" id="gift" />
         <input type="button" value="ready2party" onclick="sendToArushi()" />
       </form>
-      <p id="blurbInstructions" hidden="true" style="color: #ac33ff">
-        Your special RSVP has been copied to your clipboard! Paste & send to
-        Arushi via text & wait a few min to see magic. If that didn't work,
-        click the button below to copy to your clipboard. DON'T CLOSE YOUR TAB
-        If you are feeling the urge to navigate around this super cool website,
-        open in a new tab!!!
-      </p>
-      <button id="rsvpButton" onclick="copyRSVP()">
-        i'm coming to party!!
-      </button>
     </div>
 
     <div id="allRsvps">
