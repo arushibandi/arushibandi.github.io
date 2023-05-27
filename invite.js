@@ -15,7 +15,12 @@ async function processInvite() {
 async function sendToArushi() {
     const attendee = document.getElementById("pname").value
     const bringing = document.getElementById("gift").value
+    if (attendee === "" || bringing === "") {
+        document.getElementById("nicetry").hidden = false
+        return
+    }
 
+    document.getElementById("nicetry").hidden = true
     await createComment(attendee, bringing)
 
     const rsvps =  await fetchComments()
