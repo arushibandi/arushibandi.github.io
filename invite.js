@@ -13,9 +13,10 @@ async function processInvite() {
     em.textContent = " " + decodeURIComponent(date)
     document.getElementById("details").appendChild(em)
 
+    document.getElementById('foot').hidden = false
+    document.getElementById("seelistdiv").hidden = false
     document.getElementById('invite').hidden = false
     document.getElementById('rsvp').hidden = false
-    document.getElementById('footerp').hidden = false
     document.getElementById('loading').hidden = true
 }
 
@@ -28,8 +29,20 @@ async function sendToArushi() {
     }
 
     document.getElementById("nicetry").hidden = true
-    await createComment(attendee, bringing)
-    await fetchGuestList()
+    document.getElementById("specialpass").hidden = false
+    await createComment(attendee, bringing);
+    await fetchGuestList();
 
     return false
+}
+
+async function showGuestList() {
+    const pw = document.getElementById("guestlistpass").value
+    if (!(await checkPassToHash(pw, '蓇䥇낒嶟䯽ᮝ\uD9B0굌첟栳㻜뷩믡Ɀ郌'))) {
+        document.getElementById("wrongpass").hidden = false
+        return
+    }
+
+    document.getElementById("wrongpass").hidden = true
+    await fetchGuestList();
 }
