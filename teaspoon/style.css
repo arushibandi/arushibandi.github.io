@@ -2,15 +2,15 @@
 @font-face {
     /* Source: https://open-foundry.com/fonts/young_serif_regular by Bastien Sozeau */
     font-family: "YoungSerif";
-    src: url("https://teaspoon.taile529e.ts.net/fonts/young-serif/YoungSerif-Regular.ttf");
-    src: url("https://teaspoon.taile529e.ts.net/fonts/young-serif/YoungSerif-Regular.woff2") format("woff2"),
-        url("https://teaspoon.taile529e.ts.net/fonts/young-serif/YoungSerif-Regular.otf") format("opentype");
+    src: url("fonts/young-serif/YoungSerif-Regular.ttf");
+    src: url("fonts/young-serif/YoungSerif-Regular.woff2") format("woff2"),
+        url("fonts/young-serif/YoungSerif-Regular.otf") format("opentype");
 }
 
 @font-face {
     /* Source: https://www.collletttivo.it/typefaces/ribes by Luigi Gorlero */
     font-family: "Ribes";
-    src: url("https://teaspoon.taile529e.ts.net/fonts/ribes/Absans-Regular.woff2") format("woff2");
+    src: url("fonts/ribes/Absans-Regular.woff2") format("woff2");
 }
 
 /* V2 UNDER HERE */
