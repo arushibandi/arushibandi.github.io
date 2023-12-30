@@ -76,7 +76,23 @@ h4 {
 
 video {
     width: 300px;
-    display: block;
     margin: 0 auto;
     margin-bottom: 10px;
+
+}
+
+.video-container {
+    text-align: center;
+}
+
+@media (max-width:800px) {
+    .video-container {
+        flex-direction: row;
+    }
+}
+
+@media (min-width:800px) {
+    .video-container {
+        display: flex;
+    }
 }
