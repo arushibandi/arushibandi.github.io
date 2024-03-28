@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Software Intentions</title>
 </head>
-
+<script src="link.js"></script>
 <header>
     <a href="intro.html">
         <svg width="68" height="16" viewBox="0 0 34 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +42,20 @@
     </ol>
 
     <a href="repository.html">An incomplete collection of informing sources</a>
+
+    <br> <br>
+    <div>
+        <script src="collab.js"></script>
+        <input type="text" placeholder="what's your intentions?" id="intention">
+        <input type="button" value="🔄" onclick="refetchIntentions()">
+        <p id="loading"></p>
+    </div>
+
+    <div>
+        <ul id="cotentions" style="list-style-type: none;">
+
+        </ul>
+    </div>
 </body>
 
 </html>

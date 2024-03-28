@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Software Intentions</title>
 </head>
-
+<script src="link.js"></script>
 <header>
     <a href="intentions.html">
         <svg width="68" height="16" viewBox="0 0 34 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,8 +53,9 @@
         they often implement <a href="https://en.wikipedia.org/wiki/Traffic_shaping">Traffic Prioritization</a> for
         certain
         product surfaces
-        or certain users. I recently had a conversation with a friend whose current project at work was to add <br>
-        <code>if client==[Big Customer] { ... }</code> <br> blocks everywhere, for a customer whose performance needs
+        or certain users. I recently had a conversation with a friend whose current project at work was to add <br><br>
+        <code>if client == [Big Customer] { ... }</code> <br><br> blocks everywhere, for a customer whose performance
+        needs
         were different from everyone else. Of course, this
         customer made up a large portion of her company's revenue, hence the special attention. We add <a
             href="https://en.wikipedia.org/wiki/Tracing_(software)">tracing</a> to be able to inspect the exact
@@ -83,8 +84,8 @@
         When I say I am against scale, this is what I am talking about. How can we create applications that never have
         to scale, because they are structured completely differently and operate at the level of humans rather than the
         level of servers and clouds? At this scale, there is no need for traffic prioritization, no need to sample log
-        lines, no need to "find" a user running into a bug. In the inverse relationship between context and scale, we
-        have swung all the way towards preserving context.
+        lines, no need to "find" a user running into a bug. In the inverse relationship between context and scale, I
+        want to swing all the way towards preserving context.
     </p>
 
     <p>
