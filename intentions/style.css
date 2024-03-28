@@ -1,0 +1,32 @@
+/* Use custom open-source fonts! */
+@font-face {
+    /* Source: https://open-foundry.com/fonts/eb_garamond_regular */
+    font-family: "EBGaramond";
+    src: url("fonts/EBGaramond08-Regular.woff2") format("woff2"),
+        url("fonts/EBGaramond08-Regular.otf") format("opentype");
+}
+
+body {
+    font-family: EBGaramond;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+span {
+    font-size: x-large;
+}
+
+a:hover {
+    color: #b15cb0;
+    /* custom emoji on hover: !emojicursor.app */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:30px;'><text y='50%'>🕷️</text></svg>") 16 0,
+        auto;
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        margin-bottom: 0;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+}
