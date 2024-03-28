@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
     <title>Software Intentions</title>
 </head>
 <script src="link.js"></script>
@@ -33,9 +35,8 @@
         <li>"It should not replace or disrupt anything good that already exists, and this includes family and community
             relationships." <a href="berry.html">[Taken from Berry]</a></li>
 
-        <li>It should default to giving control to the user. Specifically, it should draw from sources like the <a
-                href="https://www.consentfultech.io">FRIES framework</a> for
-            designing user interactions.</li>
+        <li>It should default to giving control to the user, even if this is inconvenient or adds friction.
+            It should follow <a href="https://www.consentfultech.io">Consentful Tech</a> principles.</li>
 
         <li>It should, at the very least, attempt to trace and reduce its energy usage. It should not require the
             newest hardware to run. </li>
@@ -46,7 +47,7 @@
     <br> <br>
     <div>
         <script src="collab.js"></script>
-        <input type="text" placeholder="what's your intentions?" id="intention">
+        <input type="text" placeholder="what's your intention?" id="intention">
         <input type="button" value="🔄" onclick="refetchIntentions()">
         <p id="loading"></p>
     </div>

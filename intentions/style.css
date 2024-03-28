@@ -7,6 +7,8 @@
 }
 
 body {
+    font-size: 16px;
+    line-height: 150%;
     font-family: EBGaramond;
     margin-left: 10%;
     margin-right: 10%;
@@ -21,6 +23,12 @@ a:hover {
     /* custom emoji on hover: !emojicursor.app */
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:30px;'><text y='50%'>🕷️</text></svg>") 16 0,
         auto;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #227735;
 }
 
 @media screen and (max-width: 640px) {
