@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Face Un-recognition</title>
+
+</head>
+<style>
+    body {
+      margin: 10%
+    }
+  </style>
+<body>
+    <a href="/experiments/experiments.html">↩️ back to experiments</a>
+    <h2>Face Un-recognition</h2>
+    <div>
+        <table>
+            <tr style="height: 10px;">
+                <td>
+                    <button id="startVideo">Start Video</button>
+                </td>
+                <td>
+                    <p id="faceText" style="display: none;">face found! shutting off ...</p>
+                </td>
+            </tr>
+            <tr style="height: 250px;">
+                <td><video id="video" width="320" height="240" style="display: none;"></video></td>
+                <td><canvas id="canvasOutput" width="320" height="240"></canvas></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <p>
+            I created "Face un-recognition" in SFPC's Machine Language class, responding to the class prompt of how we
+            might vary a particular example of machine language.
+        </p>
+
+        <p>
+            Face un-recognition explores the idea of facial recognition as a negation of the camera, rather than an
+            addition to it or the purpose of it. Facial recognition technology is used track and surveil people in higher and higher
+            granularity, but could it alternatively be used to set boundaries to the camera and to surveillance? What is
+            the point of such a camera? Who would use it?
+        </p>
+
+        <p>
+            Face un-recognition also plays on the idea that in order for a face to be tracked and surveilled, it must
+            first be recognized as a face. In Machine Language, one of my classmates Blair Johnson explored the question
+            of "what makes a face?" This tool invites the user to explore that same question through distortion and re-making of the face. At what point does a face become "un-recognized", to you and to the camera? When does the camera misidentify a face? What kind of face doesn't look like a face?
+        </p>
+
+        <p>
+            To me, the point of such a camera is all about control. The feeling that the camera is subordinate to you,
+            the person being “watched”, rather than the other way around. In class, Xizi showed us a home security camera
+            which learns to recognize different faces, and only detects new faces as “intruders.” I wonder if a camera
+            like the one here could be used in home security, one that automatically turns off when you enter your home
+            and is switched back on when you leave, in an attempt to gain security without the privacy invasion constantly being watched. Would this give me solace enough to
+            install a security camera inside my home?
+        </p>
+
+        <p>
+            While pondering this camera, I thought about a possible feature where if there was a face in the frame but it wasn’t detected, you could click a button that says “There’s a face in this frame!” and draw a square around the face. This new data could be incorporated into the algorithm to make it “better” at detecting faces. But again I think about how that might be used against the original intentions - why would someone try to make this camera better? So that it could turn off more of the time? This leads me to think that the less a technology infers about who its user is and what they are trying to do, the more control is given back to the user. Manual intervention inherently shifts the power away from the machine back to the human. For example, I could imagine this camera switching on every 5 seconds to check if a face is in the frame again (indeed, this is what I started with), but it turns out that the camera that gives the most control is also the one that has the smallest feature set: a simple on / off button for the user to decide. 
+        </p>
+
+        <h4>Some technical details</h3>
+        <p>
+            This project was created using opencv.js, using a <a href="https://docs.opencv.org/4.x/d2/d99/tutorial_js_face_detection.html">Haar feature based classifier.</a> Given a window of (black and white) pixels, a Haar feature refers to two adjacent rectangles with a particular difference in intensity (i.e. saturation). In images of faces, these features tend to appear in specific regions, for example around the eye, eyebrows, cheek, nose, and lips. The algorithm used on this page is a Haar-base Cascade Classifier.  <a href="https://en.wikipedia.org/wiki/Cascading_classifiers">Cascade Classifiers</a> are a class of machine learning algorithm typically trained on ~hundreds of positive examples (algorithm returns "true") and an arbitrary number of negative examples (algorithm returns "false") to derive the specific parameters at which a new input would return true or false. Data used for various Haar-based classifiers, including the one <a href="https://github.com/opencv/opencv/blob/37c2af63f099909252eeced1258e9a30a317306f/data/haarcascades/haarcascade_frontalface_default.xml">used on this page</a> can be found <a href="https://github.com/opencv/opencv/tree/37c2af63f099909252eeced1258e9a30a317306f/data/haarcascades">here</a>. 
+        </p>
+
+        <p>
+            I love this example because it almost perfectly demonstrates how machines (computers) work in ways that humans don't, and a way in which they often go awry. To this little program, despite any amount of theorizing I may do in the description, "what makes a face" is very simple: a certain number of pixels in a certain range of patterns within a 2D image. The "number" and "patterns" emerge not naturally, but from manually labelling a narrow set of 2D (frontal) human faces, yet they can be applied to an image of any individual. You'll notice that in this experiment, a side of a face is not a face, because the labelled images from which this algorithm is developed did not include those examples. And yet, when running this code on a 30 fps live-stream, it almost feels as if the machine could, maybe, make a face.
+        </p>
+
+        <p>All of the code can be viewed by inspecting source in the browser and also here.</p>
+    </div>
+    <script src="utils.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        let video = document.getElementById("video"); // video is the id of video tag
+        let recording = false;
+        let stream;
+        let startBtn = document.getElementById("startVideo")
+        loadOpenCv(() => {
+            let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
+            let gray = new cv.Mat();
+            let cap = new cv.VideoCapture(video);
+            let faces = new cv.RectVector();
+            let classifier = new cv.CascadeClassifier();
+            let spl = window.location.href.split("/")
+            let url = spl.slice(0, spl.length - 1).join("/")
+            let fileName = 'haarcascade_frontalface_default.xml'
+            let faceCascadeFile = `${url}/${fileName}`;
+            createFileFromUrl(fileName, faceCascadeFile, async () => {
+                await classifier.load(fileName)
+            });
+            const FPS = 30;
+            async function processVideo() {
+                console.log("process video")
+                try {
+                    let begin = Date.now();
+                    // start processing.
+                    cap.read(src);
+                    cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
+                    classifier.detectMultiScale(gray, faces, 1.1, 4, 0);
+                    if (faces.size()) {
+                        // Face detected!
+                        for (let i = 0; i < faces.size(); ++i) {
+                            let face = faces.get(i);
+                            let point1 = new cv.Point(face.x, face.y);
+                            let point2 = new cv.Point(face.x + face.width, face.y + face.height);
+                            cv.rectangle(src, point1, point2, [255, 255, 255, 255]);
+                        }
+                        document.getElementById("faceText").style.display = "block";
+                        document.getElementById("startVideo").style.display = "block";
+                        await video.pause()
+                        video.srcObject = null;
+                        recording = false;
+                    } else {
+                        // schedule the next one.
+                        let delay = 1000 / FPS - (Date.now() - begin);
+                        setTimeout(async () => { await processVideo() }, delay);
+                    }
+                    cv.imshow('canvasOutput', src);
+                } catch (err) {
+                    console.error("error in processVideo()", err);
+                }
+            };
+            startBtn.addEventListener("click", async () => {
+                if (!recording) {
+                    await navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                        .then(async function (stream) {
+                            video.srcObject = stream;
+                            await video.play();
+                        })
+                        .catch(function (err) {
+                            console.error("error occurred while capturing video: " + err);
+                        });
+                    document.getElementById("faceText").style.display = "none";
+                    document.getElementById("startVideo").style.display = "none";
+                    recording = true;
+                    setTimeout(async () => { await processVideo() }, 10);
+                }
+            })
+        });
+
+    </script>
+</body>
+
+</html>
