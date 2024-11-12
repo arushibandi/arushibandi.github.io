@@ -1,10 +1,14 @@
+/*
+    The code in this file is largely taken from the examples found here:
+    https://docs.opencv.org/4.x/df/d6c/tutorial_js_face_detection_camera.html
+    https://docs.opencv.org/4.x/d2/d99/tutorial_js_face_detection.html
+*/
 const OPENCV_URL = "https://docs.opencv.org/3.4.0/opencv.js";
 loadOpenCv = function(onloadCallback) {
     let script = document.createElement('script');
     script.setAttribute('async', '');
     script.setAttribute('type', 'text/javascript');
     script.addEventListener('load', async () => {
-        console.log("load",cv)
         if (cv && cv.getBuildInformation)
         {
             console.log(cv.getBuildInformation());
@@ -14,12 +18,10 @@ loadOpenCv = function(onloadCallback) {
         {
             // WASM
             if (cv instanceof Promise) {
-                console.log("awaiting cv")
                 cv = await cv;
                 console.log(cv.getBuildInformation());
                 onloadCallback();
             } else {
-                console.log("not cv promise")
                 cv['onRuntimeInitialized']=()=>{
                     console.log(cv.getBuildInformation());
                     onloadCallback();

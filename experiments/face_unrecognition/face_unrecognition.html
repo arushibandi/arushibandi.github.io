@@ -71,7 +71,7 @@
             I love this example because it almost perfectly demonstrates how machines (computers) work in ways that humans don't, and a way in which they often go awry. To this little program, despite any amount of theorizing I may do in the description, "what makes a face" is very simple: a certain number of pixels in a certain range of patterns within a 2D image. The "number" and "patterns" emerge not naturally, but from manually labelling a narrow set of 2D (frontal) human faces, yet they can be applied to an image of any individual. You'll notice that in this experiment, a side of a face is not a face, because the labelled images from which this algorithm is developed did not include those examples. And yet, when running this code on a 30 fps live-stream, it almost feels as if the machine could, maybe, make a face.
         </p>
 
-        <p>All of the code can be viewed by inspecting source in the browser and also here.</p>
+        <p>All of the code can be viewed by inspecting source in the browser and also <a href=""https://github.com/arushibandi/arushibandi.github.io/tree/master/experiments/face_unrecognition">here</a>.</p>
     </div>
     <script src="utils.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -98,7 +98,6 @@
                 if (!recording) {
                     return
                 }
-                console.log("process video")
                 try {
                     let begin = Date.now();
                     // start processing.
