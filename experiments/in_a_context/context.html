@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>What's in a context?</title>
+
+</head>
+<style>
+    body {
+        margin: 10%;
+        background-color: rgb(253, 253, 248);
+    }
+    .pink {
+        font-weight: bold;
+        color: magenta;
+    }
+    .code {
+        font-family: 'Courier New', Courier, monospace;
+    }
+    a, a:visited{
+        color: #a71dc3;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #fe81d8;
+    }
+</style>
+
+<body>
+    <a href="/experiments/experiments.html">↩️ back to experiments</a>
+    <h2>What's in a context?</h2>
+    <p>In the School for Poetic Computation's Machine Language class, we considered how <span class="pink">a bit is a boundary:</span>
+        computers cannot handle ambiguity. Rather, they only 'know' what you tell them through specific inputs at that point in time. This is contrasted with how humans operate, where the actions we take
+        are necessarily preceded by all of our previous experiences that led us there. All of our prior motivations and prejudices and confusions, which we
+        know implicitly yet can't really see, culminate in whatever the moment may make of us. </p>
+        
+        <p>This abstraction away from the greater context of things, this lack of unpredictable and overwhelming intentions and stimuli, gives software its power. It allows programs to scale and handle varied
+        requests without requiring information about their specificities, classifying and crystallizing the fuzzy range of human behaviors into strict flows of logic. Still, it
+        is oftentimes useful for a piece of code to know details like where and who a request is coming from, and to have an awareness of things taking too long or retain a connection to other parts of code. </p>
+    <p>In the Go-lang langage, one way this comes up is through the native <span class="code"><a href="https://pkg.go.dev/context">context</a></span> package. The <span class="code">context.Context</span> type can be used to pass signals and information through a chain of function calls, so that it may be possible for one block of code to glean a bit of greater awareness of its counterparts. I have come to love using this package, the elegance it inspires both in thinking about code and the code itself. As part of class, I wanted to explore this package in a more playful way and created a couple explorations. </p>
+    <ul style="list-style: '✿  ';">
+        <style>
+            li::marker { color: magenta;}
+        </style>
+        <li><a href="https://go.dev/play/p/tc_uHb3wfDU">context dump</a> - This program explores some basics of the <span class="code">context</span> package through my personal "context" at the time of writing. It's also quite an absurd way to use this package, revealing some opinionated aspects of the library.</li>
+    </br>
+        <li><a href="https://go.dev/play/p/mVLfSoW-PBC">parts of a whole</a> - This program explores context timeouts and cancellation signals in the form of a simple grid visualization, inviting the visitor to imagine what such software looks and feels like, given that its execution can never truly be observed.</li>
+    </ul>  
+    <p>A good friend of mine once described our work as software engineers as <span class="pink">the management of complexity</span>; I have yet to find a more apt description. At work, I am always trying to neatly tie two tiny threads together or to cleanly  write a basic function without letting the imprecision of its surrounding apparatus take over. As much as we engineers may try, we can't escape the tedious, entangled, mess of life. Most code is connected to something outside of itself, at the very least by the fact that our brains are likely elsewhere as we write it. Go-lang's <span style="font-family: 'Courier New', Courier, monospace;">context</span> package is simply an acceptance of this.</p>
+
+    <p>Source code can also be viewed <a href="dump.go">here</a> and <a href="parts.go">here</a>.</p>
+</body>
+
+</html>
