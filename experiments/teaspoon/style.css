@@ -1,0 +1,98 @@
+/* Use custom open-source fonts! */
+@font-face {
+    /* Source: https://open-foundry.com/fonts/young_serif_regular by Bastien Sozeau */
+    font-family: "YoungSerif";
+    src: url("fonts/young-serif/YoungSerif-Regular.ttf");
+    src: url("fonts/young-serif/YoungSerif-Regular.woff2") format("woff2"),
+        url("fonts/young-serif/YoungSerif-Regular.otf") format("opentype");
+}
+
+@font-face {
+    /* Source: https://www.collletttivo.it/typefaces/ribes by Luigi Gorlero */
+    font-family: "Ribes";
+    src: url("fonts/ribes/Absans-Regular.woff2") format("woff2");
+}
+
+/* V2 UNDER HERE */
+/* Links Stuff */
+a {
+    color: #416486;
+    font-family: Ribes;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #b15cb0;
+    /* custom emoji on hover: !emojicursor.app */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🥄</text></svg>") 16 0,
+        auto;
+}
+
+header {
+    text-align: left;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Ribes, serif !important;
+    background-color: #DBE2EB;
+}
+
+/* Home page background image */
+#home {
+    background-image: url("assets/bg_tsp.png");
+    background-size: cover;
+}
+
+h1 {
+    font-family: YoungSerif;
+    letter-spacing: -0.1rem;
+    font-size: 64px;
+}
+
+.home-nav-elem {
+    text-align: left;
+}
+
+/* about page specific */
+h4 {
+    font-family: YoungSerif;
+    font-weight: lighter;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section>p {
+    line-height: 130%;
+    margin-bottom: 10px;
+}
+
+video {
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+}
+
+.video-container {
+    text-align: center;
+}
+
+@media (max-width:800px) {
+    .video-container {
+        flex-direction: row;
+    }
+}
+
+@media (min-width:800px) {
+    .video-container {
+        display: flex;
+    }
+}

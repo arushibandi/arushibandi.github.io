@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Intentional Misuse</title>
+</head>
+<style>
+    body {
+        margin: 10%;
+        background-color: #f0f8df;
+    }
+
+    a,
+    a:visited {
+        color: #7146e1;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #fe81d8;
+    }
+
+    #mother {
+        background-image: url('mother.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: relative;
+        margin: 10px;
+    }
+
+    #kendall {
+        background-image: url('kendall.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: relative;
+        margin: 10px;
+    }
+
+    .code {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    li+li {
+        margin-top: 10px;
+    }
+
+    b, em {
+        color:#007b5e;
+    }
+</style>
+
+<body>
+    <a href="/experiments/experiments.html">↩️ back to experiments</a>
+    <h2>On intentional misuse, databases, and co-opting the co-opters</h2>
+    <div style="display: flex; width: 100%;">
+        <div style="width: 100%; margin-right: 10px;">
+            <p>A couple years ago, I did something a bit reckless. I was exploring <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection">WebRTC</a> and wanted to
+                see if it would be possible to create a site for my friend and I's birthday party without a back-end
+                server to host data. Spoiler: this approach didn't quite work -- it required at least one internet
+                connection that never dropped -- but I did end up creating an invite on my website with an interactive
+                bit that friends could fill out, without a private server or database to hold that information.</p>
+            <p>Well, that's not technically true. I did use a private server and database, it just wasn't mine.</p>
+            <p>Running low on time and engineering energy, I dumped the invite responses and sensitive bits like time
+                and place into the comments of a Figma file in my account. Then I sent the "invitation" - a link to my
+                website containing one of my personal developer API keys in the URL - to my friends. Upon opening this
+                invitation, JavaScript running on the site would go and fetch all the information from the comments of
+                the Figma file and write to it as well using my API key. I essentially used Figma comments as a
+                database, and my API key as the password. And I hoped that nobody shared out the weird-looking link I
+                sent them but also opened it so they would come celebrate!</p>
+        </div>
+        <div style="margin: 10px;">
+            <video controls="controls" name="bday party demo" style="width: 100%;">
+                <source src="bday.mov">
+            </video>
+        </div>
+    </div>
+
+
+    <p>There's this database alignment chart <a href="https://www.are.na/block/30849194">meme</a> that pops up
+        periodically in one of the water cooler channels at work, whenever someone re-discovers a strange way an
+        engineer has previously chosen to store data. When reflecting on what makes a database, I remember The Carrier
+        Bag Theory of Evolution (<a
+            href="https://stillmoving.org/resources/the-carrier-bag-theory-of-fiction">popularized in this essay by
+            Ursula K. Le Guin?</a>) and wonder, what makes a basket so different from a database? What might a Carrier
+        Bag Theory of Software look like? This little experiment got me thinking about a few other things as well. </p>
+
+    <h3>Intentional misuse</h3>
+    <p>At the time of creation, I was pretty sure this cute site violated <a
+            href="https://www.figma.com/legal/developer-terms/">Figma's Developer Terms</a>. This seems slightly bad to
+        admit considering that (at the time of writing) this is my employer. But that's exactly why I got this idea!
+        Because I already knew how the API and backend worked and mentally/emotionally, it was the easiest tool at hand
+        to reason about. </p>
+    <p>Digging in now, it seems possible that the only clause I violated was the Security clause, basically for exposing
+        a personal (though throwaway) Figma account to undue security risk. I found this interesting because I was
+        expecting there to be a clause governing how the Developer API could be used and possibly outright banning some
+        cases, but the focus instead seems to be on making sure the Application using the API was developed properly and
+        protected Figma's business interests. Even in the standard <a href="https://www.figma.com/legal/tos/">Terms of
+            Service</a>, "Use Rights" refers to how Figma's rights towards users, rather than the other way around. My
+        little bday party invite seems a-okay by the <a href="https://www.figma.com/legal/aup/">Acceptable Use
+            Policy</a>. </p>
+    <p> This made me wonder if this sort of use of SaaS or any Internet-connected software with a data center was in a
+        bit of a gray area, not explicitly banned but possibly a bit shady. From my standpoint, this wasn't the ideal
+        solution either -- I <em>would</em> have liked to set up my own server to run this site but that just felt so ...
+        painful ... for the scope of what I was trying to create.</p>
+    <p>In my head, I framed this experiment as a sort of <em>intentional misuse of Figma's services</em>: rather than
+        using the site to design or whiteboard as it set out to do, I used it's APIs for my own unrelated purposes and
+        not really in a malicious way either. Considering all the (free) data-hosting APIs I could easily get access to
+        and even encrypt my data on top of, why would I go through the trouble of self-hosting and managing a database
+        and its security? Why not let the corps do it for me, co-opting their hard work while remaining illegible and
+        un-monetizable as a user?</p>
+
+    <p>In this modern dream, technology often feels to me like a prescription. A prescription in the sense of <a
+            href="https://www.google.com/search?q=prescription%20definition">recommendation that is authoritatively put
+            forward</a>. It's hard for me to identify who exactly is the authority (or rather why we have not questioned
+        their authority) telling me to adopt ChatGPT to boost productivity or buy a pair of AirPods to zone out the
+        outside world, but these authorities definitely feel ... out there. New devices and fixes and lifestyle-hacks
+        and apps (not just the digital ones!) are constantly pitched to me that on the basis that without them, I am too
+        slow or too lazy or too ignorant or too unattractive. </p>
+
+    <p>When I was Google searching "intentional misuse" to see if that was a term and what it might mean, most of the
+        results were about drug abuse and misusing medicine. I may be stretching the limits of this metaphor, but if
+        technology were to be viewed as a drug (and <a
+            href="https://www.hazeldenbettyford.org/articles/teen-technology-addiction">indeed</a> <a
+            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10504808/">it is</a> <a
+            href="https://www.sydney.edu.au/brain-mind/our-research/technology-addiction.html">already</a>), then what
+        might its intentional misuse look like? Can we intentionally misuse and abuse Apple, Facebook, Amazon for our
+        gain rather than theirs? Is this even a real thing? I'm not sure, but <a href="https://www.gwei.org/index.php">I
+            want Google to eat itself</a>.</p>
+
+    <h3>Techno-capitalism co-opts everything</h3>
+    <div style="display: flex; flex-direction: row;">
+        <div style="margin-right: 10px; width: 50%;">
+            <p>But is it possible to co-opt something back? I'm inspired by <a
+                    href="https://www.fsgoriginals.com/books/everything-i-need-i-get-from-you">the early fandoms of
+                    Twitter</a>, using the application for their own whims as opposed to public status updates or texts,
+                what it was supposedly created to do. I'm inspired by projects like <a
+                    href="https://ambient.institute/i/sheets/">Sheet Sites</a>, re-imagining Google Sheets as a website
+                hosting service and inviting people to reflect on what they've created.</p>
+
+            <p>In software engineering, there is this idea that regardless of what purpose an API was designed for,
+                users will find its limits and use it in any way it works. Such APIs will from thereon be required to
+                uphold contracts they didn't even realize they were providing. It's named after <span
+                    title="sidenote: I love how Hyrum's observation is written as a poem">the first person to publicly
+                    describe it - <a href="https://www.hyrumslaw.com">Hyrum's Law</a></span>. From this angle, my use of
+                Figma isn't misuse at all! I am but a simple user depending on one of the many observable behaviors of
+                its Developer APIs.</p>
+
+            <p>Audre Lorde <a
+                    href="https://collectiveliberation.org/wp-content/uploads/2013/01/Lorde_The_Masters_Tools.pdf">famously
+                    said</a> "the master's tools will never dismantle the master's house", but it wasn't until writing
+                this webpage that I took note of the phrase that comes after: "They may allow us temporarily to beat him
+                at his own game ..." It's naive to think tricks and hacks like this could lead to any meaningful form of
+                digital freedom, x[but perhaps they can give brief respite, small doses of resistance to the flattening
+                and <a href="https://theconvivialsociety.substack.com/p/the-enclosure-of-the-human-psyche">enclosure</a>
+                that is the current status quo. At least it did for me. </p>
+        </div>
+        <div id="mother" style="width: 20%; text-align: center; color: #E1A61A;">high fashion but make it sustainability
+        </div>
+        <div id="kendall" style="width: 20%; text-align: center; color: #bf0f4a;">you already know this one</div>
+    </div>
+
+    <h3>Technical details & make your own</h3>
+    <p>
+        All the code to make this work is contained <a href="https://github.com/arushibandi/arushibandi.github.io/tree/master/experiments/intentional_misuse/utils.js">here</a> and in a <span class="code">script</span> tag that can be viewed
+        by inspecting source. To play around with this there's a few things you'll need:
+    <ol>
+        <li><a href="www.figma.com">A Figma account</a>. If you're worried about security risk and not already familiar
+            with personal developer keys, I would suggest creating a burner account with an email address you don't
+            typically use - iCloud's <a href="https://support.apple.com/en-gb/102548">Hide My Email</a> feature is nice
+            for things like this, but you could alternatively just create a new email address.</li>
+        <li><a href="https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens">A personal
+                access token </a>(Home → Settings → Security → Personal Access Tokens). It should be configured to
+            read-only for file content and write for comments, no access for everything else. <b>Important:</b> Remember
+            to revoke these tokens once you're done testing and hosting your site, to avoid leaking any of the data in
+            your Figma account. You can create new access tokens easily anyways. </li>
+        <li>The file key of a Figma file to use for testing. You can create a new file by going <a
+                href="https://www.figma.com/design/new">here</a> and extracting the text between the two slashes
+            following the word <span class="code">design</span> in the URL: <span
+                class="code">www.figma.com/design/your-file-key/...</span></li>
+    </ol>
+    The following is a little playground you can use to get familiar with how this works. To get all the pieces working, you'll need to first input your file key and API key from the previous steps. <b>Note:</b> you should probably never give this kind of data away if any other site asks or do this type of stuff over public wifi! Read the source code of this page if you're feeling suspicious 🗝️.
+    </p>
+    <div>
+        <div>
+            <input id="db" type="text" placeholder="enter Figma file key" />
+            <input id="api" type="text" placeholder="enter API key" />
+            <button id="btn-save">save to use below</button>
+        </div>
+        </br>
+        <div>
+            <input style="width: 300px;" id="post" type="text" placeholder="input some data you want to store in a comment" />
+            <button id="btn-post">post a comment</button>
+        </div>
+        <div>
+            <h4 style="color: #007b5e;" id="comment-heading">no comments fetched!</h4>
+            <ul id="comments"></ul>
+            <button id="btn-comments-refetch">refetch comments!</button>
+        </div>
+        <p>
+            Now that you can store and retrieve data from within the file comments, you'll want to make it accessible through a special URL that only you can generate and share out. You'll likely want to re-use the helpers I've linked <a href="https://github.com/arushibandi/arushibandi.github.io/tree/master/experiments/intentional_misuse/utils.js">here</a> within your page. You can also download the HTML from <a id="example-link" href="example.html">this example page</a> to get started.
+        </p>
+        <div>
+            <input style="width: 200px" id="base-link" type="text" placeholder="enter base URL to create a link!">
+            <button id="btn-link">create custom link!</button>
+            <span><a id="custom-link" href="" style="visibility: hidden;">your custom link</a></span>
+        </div>
+    </div>
+    <script src="utils.js"></script>
+    <script>
+        let fileKey, apiKey;
+        // helper to set comments in the <ul> element
+        function setComments(comments) {
+            const ul = document.getElementById("comments")
+            ul.innerHTML = ''
+            if (comments.length > 0) {
+                document.getElementById("comment-heading").innerText = "fetched comments:"
+            }
+            for (const comment of comments) {
+                const li = document.createElement("li")
+                li.textContent = comment
+                ul.appendChild(li)
+            }
+        }
+        // fetch comments and reset the <ul> element with the new comments
+        async function fetchAndSetComments() {
+            if (!fileKey || !apiKey) {
+                console.warn("Not fetching comments because either fileKey or apiKey is unset")
+                return
+            }
+            const comments = await fetchCommentsAsJSON(fileKey, apiKey)
+            console.log("comments fetched: ", comments)
+            setComments(comments)
+        }
+        // Button for fetching comments after inputting file key and API key
+        document.getElementById("btn-save").onclick = () => {
+            fileKey = document.getElementById("db").value
+            apiKey = document.getElementById("api").value
+            const link = document.getElementById("example-link")
+            link.setAttribute("href", `example.html?key=${apiKey}&file=${fileKey}`)
+        }
+        // Button for re-fetching comments
+        document.getElementById("btn-comments-refetch").onclick = () => {
+            fetchAndSetComments()
+        }
+        // Button for posting comments
+        document.getElementById("btn-post").onclick = () => {
+            const txt = document.getElementById("post")
+            if (txt.value == "") {
+                console.warn("Not creating an empty comment; fill out the input before posting a comment")
+                return
+            } else if (!fileKey || !apiKey) {
+                console.warn("Not creating a comment because either fileKey or apiKey is unset")
+                return
+            }
+            console.log("comment", txt)
+            createJSONComment(txt.value, fileKey, apiKey)
+        }
+        document.getElementById("btn-link").onclick = () => {
+            const base = document.getElementById("base-link").value
+            const link = createLink(base, apiKey, fileKey)
+            const elem = document.getElementById("custom-link")
+            elem.setAttribute("href", link)
+            elem.style.visibility = "visible"
+        }
+    </script>
+    </br>
+    <hr>
+    <p>And of course, relics from the original site:</p>
+    <a href="bday/invite.html"> bday party 2023 </a>
+    <br />
+    <a href="bday/bday.html"> bootstrap bday party 2023 </a>
+</body>
+
+</html>

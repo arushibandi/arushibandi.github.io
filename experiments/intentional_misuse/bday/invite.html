@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="invite.css" />
+  </head>
+  <body>
+    <script src="invite.js"></script>
+    <script src="util.js"></script>
+
+    <svg height="100px" width="500" hidden="false">
+      <polygon
+        points="0,0 50,60 50,0"
+        style="fill: yellowgreen; stroke: #db92ff; stroke-width: 1"
+      ></polygon>
+      <polygon
+        points="50,70 70,100 70,0"
+        style="fill: yellowgreen; stroke: #db92ff; stroke-width: 1"
+      ></polygon>
+    </svg>
+
+    <p id="loading" style="color: rgb(213, 117, 0)">loading .....</p>
+
+    <p id="reject" hidden="true" style="color: rgb(213, 117, 0)">
+      uhhhh sorry this page is not going to work for you if you didn't receive a
+      special invite link from arushi herself. Or maybe this doesn't work idk
+    </p>
+
+    <div id="invite" hidden="true">
+      <img src="img/bday.png" alt="photo of baby arushi partying" />
+      <img
+        src="img/gabby.png"
+        alt="photo of baby gabby playing piano"
+        rotate=""
+        90
+      />
+
+      <h3 id="party" style="color: yellowgreen">!!!!!! PARTY TIME !!!!</h3>
+
+      <p>
+        You have received an invitation to arushi & gabby's bday party 2023.
+      </p>
+
+      <p>
+        This is an experiment in creating partiful but without a backend server.
+        I tried using only web p2p libraries but that didn't go well so instead
+        I made a Figma file my database.
+      </p>
+      <p>
+        Because I hate myself. Cool let's get drunk
+        <em style="color: yellowgreen"> June 17th!!!!</em> We'll be partyin' a
+        little then plan to go out to somewhere for a fun night & a long night.
+      </p>
+
+      <br />
+      <p id="details">The party shall begin 8pm at</p>
+      <br />
+      <p>
+        If you're not gonna show up ........ never speak to me or my gabby again
+      </p>
+      <p>
+        You must bring something (it could be like, a good attitude or
+        something)
+      </p>
+
+      <p>
+        You'll get to see the exclusive guest list only after rsvp-ing :) and no
+        take backs
+      </p>
+
+      <p>p.s. this website is doing its best, please be patient as it loads.</p>
+    </div>
+
+    <br />
+
+    <div id="rsvp" hidden="true">
+      <form>
+        <label for="pname">Who are you?</label>
+        <input type="text" id="pname" style="margin-left: 7.3%" />
+        <br />
+        <label for="gift">What are you bringing?</label>
+        <input type="text" id="gift" style="align-content: end" />
+
+        <input
+          type="button"
+          id="partyBtn"
+          value=" ready2party "
+          style="background-color: #db92ff; align-content: end; margin-left: 5%"
+          onclick="sendToArushi()"
+        />
+      </form>
+      <p id="nicetry" hidden="true" style="color: rgb(0, 49, 35)">
+        Nice try. you're gonna need to fill out the form to see who's coming.
+      </p>
+      <p id="specialpass" hidden="true">
+        The password to see the guest list if you revisit this page is the name
+        of the restaurant next to the party address, all lower caps, one word,
+        no punctuation or spaces.
+      </p>
+    </div>
+
+    <br />
+    <br />
+
+    <div id="seelistdiv" hidden="true">
+      <label for="guestlist">see who's coming</label>
+      <input type="text" id="guestlistpass" style="margin-left: 5%" />
+      <input
+        type="button"
+        id="guestlistBtn"
+        onclick="showGuestList()"
+        style="background-color: #db92ff; align-content: end; margin-left: 5%"
+        value="see guest list"
+      />
+      <p id="wrongpass" hidden="true" style="color: rgb(0, 49, 35)">
+        sorry, you must have the wrong password!
+      </p>
+    </div>
+    <br />
+
+    <div id="allRsvps">
+      <ul id="theGuestList"></ul>
+    </div>
+  </body>
+
+  <br />
+
+  <footer id="foot" hidden="true">
+    <p>
+      bugs can be filed live at the time/place stated. i'd like to thank nav,
+      gabby, neeti, vibha, and, my parents and everyone else who supported this
+      endeavour
+    </p>
+    <p>
+      this website was inspired by
+      <a href="https://www.dusendusen.com/">our fave</a>
+    </p>
+  </footer>
+</html>

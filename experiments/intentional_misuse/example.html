@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Example 💅🏽</title>
+
+</head>
+<style>
+    span.urlField {
+        color: #fe81d8;
+    }
+</style>
+<script src="utils.js"></script>
+<body>
+    <p>API key extracted from URL is: <span class="urlField" id="key">nothing found!</span></p>
+    <p>File key extracted from URL is: <span class="urlField" id="file">nothing found!</span></p>
+    <p>Inspect source for some tips on how to get started!</p>
+</body>
+<script>
+    // First, extract the file key and the api key from the URL.
+    // If someone stumbles across your page without being sent the special link, no data will be revealed to them. Put all other sensitive data (i.e. time/place/personal info) inside of a comment or within the URL in a similar way to keep it safe.
+    const fileKey = getFileKey();
+    const apiKey = getAPIKey();
+    document.getElementById("key").innerText = apiKey;
+    document.getElementById("file").innerText = fileKey;
+    /*
+        // In here, you'll probably want to do something as follows
+        const data = fetchCommentsAsJSON(fileKey, apiKey)
+        // display your data .... 
+        //
+        // To write data to the file, do something like this
+        await createJSONComment(stringData, fileKey, apiKey)
+    */
+</script>
+</html>

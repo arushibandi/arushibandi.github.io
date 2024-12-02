@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: 10%;
+    background-color: rgb(10, 112, 10);
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+img {
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="text"] {
+    background-color : #dbffb1; 
+}
+
+h3 {
+    font-size:max(18px,3vw);
+    margin: auto;
+    margin-left: 35%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+}
+
+label, p {
+    font-size:max(10px,1.5vw);
+    width: auto;
+}
+
+footer p {
+    font-size:max(4px,1vw);
+}
